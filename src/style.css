@@ -1,0 +1,18 @@
+/* style.css */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000205;
+  overflow: hidden;
+  /* スクロールバーを隠す */
+}
+
+#app {
+  /* 画面に固定する */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}

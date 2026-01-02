@@ -1,0 +1,21 @@
+{
+  "name": "fuwa.jp",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "icons": "bun scripts/generate-icons.js"
+  },
+  "devDependencies": {
+    "@types/three": "^0.182.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4"
+  },
+  "dependencies": {
+    "sharp": "^0.34.5",
+    "three": "^0.182.0"
+  }
+}
