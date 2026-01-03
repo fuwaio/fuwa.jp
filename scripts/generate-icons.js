@@ -13,18 +13,23 @@ async function generate() {
         console.log('✅ apple-touch-icon.png generated');
 
         // 2. OGP画像 (1200x630) の生成
-        // ロゴを中央に配置するため、まずリサイズしてからextend（余白追加）します
-        await sharp('public/favicon.svg')
-            .resize(300, 300) // 中央に置くロゴのサイズ
-            .extend({
-                top: 165,    // (630 - 300) / 2
-                bottom: 165,
-                left: 450,   // (1200 - 300) / 2
-                right: 450,
+        // 背景色のベース画像を作成し、その上にリサイズしたロゴを合成します
+        const logo = await sharp('public/favicon.svg')
+            .resize(300, 300)
+            .toBuffer();
+
+        await sharp({
+            create: {
+                width: 1200,
+                height: 630,
+                channels: 3,
                 background: bg
-            })
+            }
+        })
+            .composite([{ input: logo, gravity: 'center' }])
             .png()
             .toFile('public/ogp.png');
+
         console.log('✅ ogp.png generated');
 
     } catch (err) {
